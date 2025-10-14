@@ -1,17 +1,26 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Server } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 export function Signup() {
+  const [searchParams] = useSearchParams();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [referralCode, setReferralCode] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { signUp } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const refCode = searchParams.get('ref');
+    if (refCode) {
+      setReferralCode(refCode);
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +39,7 @@ export function Signup() {
     setLoading(true);
 
     try {
-      await signUp(email, password, fullName);
+      await signUp(email, password, fullName, referralCode);
       navigate('/dashboard');
     } catch (err: any) {
       setError(err.message || 'Failed to create account');
@@ -113,6 +122,24 @@ export function Signup() {
                 className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/30 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-slate-400"
                 placeholder="••••••••"
               />
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-slate-200 mb-2">
+                Referral Code (Optional)
+              </label>
+              <input
+                type="text"
+                value={referralCode}
+                onChange={(e) => setReferralCode(e.target.value.toUpperCase())}
+                className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/30 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-slate-400 uppercase"
+                placeholder="Enter referral code"
+              />
+              {referralCode && (
+                <p className="mt-1 text-xs text-cyan-400">
+                  You'll be linked to the referrer's network
+                </p>
+              )}
             </div>
 
             <div className="flex items-start">

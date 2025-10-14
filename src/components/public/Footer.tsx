@@ -87,7 +87,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start space-x-2">
                 <Mail className="h-5 w-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                <span>support@biduahosting.com</span>
+                <span>support@ramaerahosting.com</span>
               </li>
               <li className="flex items-start space-x-2">
                 <Phone className="h-5 w-5 text-cyan-400 flex-shrink-0 mt-0.5" />

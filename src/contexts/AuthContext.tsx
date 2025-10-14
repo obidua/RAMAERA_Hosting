@@ -8,7 +8,7 @@ interface AuthContextType {
   profile: UserProfile | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string, fullName: string) => Promise<void>;
+  signUp: (email: string, password: string, fullName: string, referralCode?: string) => Promise<void>;
   signOut: () => Promise<void>;
   isAdmin: boolean;
   isSuperAdmin: boolean;
@@ -66,19 +66,46 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (error) throw error;
   };
 
-  const signUp = async (email: string, password: string, fullName: string) => {
+  const signUp = async (email: string, password: string, fullName: string, referralCode?: string) => {
     const { data, error } = await supabase.auth.signUp({ email, password });
     if (error) throw error;
 
     if (data.user) {
+      let referrerData = null;
+
+      if (referralCode) {
+        const { data: referrer } = await supabase
+          .from('users_profiles')
+          .select('id, referral_level_1, referral_level_2')
+          .eq('referral_code', referralCode)
+          .maybeSingle();
+
+        referrerData = referrer;
+      }
+
+      const profileData: any = {
+        id: data.user.id,
+        full_name: fullName,
+        role: 'customer',
+        account_status: 'active'
+      };
+
+      if (referrerData) {
+        profileData.referred_by = referrerData.id;
+        profileData.referral_level_1 = referrerData.id;
+
+        if (referrerData.referral_level_1) {
+          profileData.referral_level_2 = referrerData.referral_level_1;
+        }
+
+        if (referrerData.referral_level_2) {
+          profileData.referral_level_3 = referrerData.referral_level_2;
+        }
+      }
+
       const { error: profileError } = await supabase
         .from('users_profiles')
-        .insert({
-          id: data.user.id,
-          full_name: fullName,
-          role: 'customer',
-          account_status: 'active'
-        });
+        .insert(profileData);
 
       if (profileError) throw profileError;
     }

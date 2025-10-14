@@ -155,8 +155,8 @@ export function Contact() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-white mb-1">Email</p>
-                      <p className="text-slate-400">support@biduahosting.com</p>
-                      <p className="text-slate-400">sales@biduahosting.com</p>
+                      <p className="text-slate-400">support@ramaerahosting.com</p>
+                      <p className="text-slate-400">sales@ramaerahosting.com</p>
                     </div>
                   </div>
 

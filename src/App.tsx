@@ -16,8 +16,10 @@ import { Signup } from './pages/Signup';
 
 import { Overview } from './pages/dashboard/Overview';
 import { MyServers } from './pages/dashboard/MyServers';
+import { Referrals } from './pages/dashboard/Referrals';
 
 import { AdminDashboard } from './pages/admin/AdminDashboard';
+import { ReferralManagement } from './pages/admin/ReferralManagement';
 import SplashCursor from './components/SplashCurser';
 
 function App() {
@@ -50,6 +52,7 @@ function App() {
           >
             <Route index element={<Overview />} />
             <Route path="servers" element={<MyServers />} />
+            <Route path="referrals" element={<Referrals />} />
             <Route path="billing" element={<div className="text-center py-20"><h2 className="text-2xl font-bold text-gray-900">Billing Page</h2><p className="text-gray-600">Coming soon</p></div>} />
             <Route path="support" element={<div className="text-center py-20"><h2 className="text-2xl font-bold text-gray-900">Support Page</h2><p className="text-gray-600">Coming soon</p></div>} />
             <Route path="settings" element={<div className="text-center py-20"><h2 className="text-2xl font-bold text-gray-900">Settings Page</h2><p className="text-gray-600">Coming soon</p></div>} />
@@ -68,6 +71,7 @@ function App() {
             <Route path="servers" element={<div className="text-center py-20"><h2 className="text-2xl font-bold text-gray-900">Server Management</h2><p className="text-gray-600">Coming soon</p></div>} />
             <Route path="plans" element={<div className="text-center py-20"><h2 className="text-2xl font-bold text-gray-900">Plans Management</h2><p className="text-gray-600">Coming soon</p></div>} />
             <Route path="orders" element={<div className="text-center py-20"><h2 className="text-2xl font-bold text-gray-900">Orders Management</h2><p className="text-gray-600">Coming soon</p></div>} />
+            <Route path="referrals" element={<ReferralManagement />} />
             <Route path="support" element={<div className="text-center py-20"><h2 className="text-2xl font-bold text-gray-900">Support Management</h2><p className="text-gray-600">Coming soon</p></div>} />
           </Route>
 

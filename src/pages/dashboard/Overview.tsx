@@ -37,7 +37,7 @@ export function Overview() {
     {
       id: 1,
       name: 'Production Web Server',
-      hostname: 'web-prod-01.bidua.cloud',
+      hostname: 'web-prod-01.ramaera.cloud',
       status: 'active',
       ip: '192.168.1.100',
       plan: 'Professional',
@@ -45,7 +45,7 @@ export function Overview() {
     {
       id: 2,
       name: 'Database Server',
-      hostname: 'db-prod-01.bidua.cloud',
+      hostname: 'db-prod-01.ramaera.cloud',
       status: 'active',
       ip: '192.168.1.101',
       plan: 'Memory Plus',
@@ -53,7 +53,7 @@ export function Overview() {
     {
       id: 3,
       name: 'Development Server',
-      hostname: 'dev-01.bidua.cloud',
+      hostname: 'dev-01.ramaera.cloud',
       status: 'stopped',
       ip: '192.168.1.102',
       plan: 'Starter',

@@ -11,7 +11,8 @@ import {
   LayoutDashboard,
   Users,
   ShoppingCart,
-  FileText
+  FileText,
+  Gift
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -29,6 +30,7 @@ export function DashboardLayout() {
   const customerLinks = [
     { to: '/dashboard', icon: LayoutDashboard, label: 'Overview' },
     { to: '/dashboard/servers', icon: Server, label: 'My Servers' },
+    { to: '/dashboard/referrals', icon: Gift, label: 'Referrals' },
     { to: '/dashboard/billing', icon: CreditCard, label: 'Billing' },
     { to: '/dashboard/support', icon: MessageSquare, label: 'Support' },
     { to: '/dashboard/settings', icon: Settings, label: 'Settings' },
@@ -40,6 +42,7 @@ export function DashboardLayout() {
     { to: '/admin/servers', icon: Server, label: 'Servers' },
     { to: '/admin/plans', icon: FileText, label: 'Plans' },
     { to: '/admin/orders', icon: ShoppingCart, label: 'Orders' },
+    { to: '/admin/referrals', icon: Gift, label: 'Referrals' },
     { to: '/admin/support', icon: MessageSquare, label: 'Support' },
   ];
 
@@ -59,7 +62,7 @@ export function DashboardLayout() {
               <Link to="/" className="flex items-center space-x-2">
                 <Server className="h-8 w-8 text-cyan-400" />
                 <span className="text-xl font-bold text-white">
-                  {isAdminPanel ? 'Admin Panel' : 'BIDUA'}
+                  {isAdminPanel ? 'Admin Panel' : 'RAMAERA'}
                 </span>
               </Link>
               <button

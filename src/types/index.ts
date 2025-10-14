@@ -117,3 +117,62 @@ export interface TicketMessage {
   created_at: string;
   user?: UserProfile;
 }
+
+export type ReferralLevel = 1 | 2 | 3;
+export type PayoutStatus = 'requested' | 'under_review' | 'approved' | 'rejected' | 'paid';
+export type PaymentMethod = 'bank_transfer' | 'upi' | 'paypal';
+
+export interface ReferralStats {
+  referral_code: string;
+  total_referrals: number;
+  l1_referrals: number;
+  l2_referrals: number;
+  l3_referrals: number;
+  total_earnings: number;
+  available_balance: number;
+  total_withdrawn: number;
+  can_request_payout: boolean;
+}
+
+export interface ReferralEarning {
+  id: string;
+  user_id: string;
+  referral_user_id: string;
+  order_id: string;
+  level: ReferralLevel;
+  commission_percentage: number;
+  order_amount: number;
+  commission_amount: number;
+  is_recurring: boolean;
+  created_at: string;
+  referral_user?: UserProfile;
+  order?: Order;
+}
+
+export interface ReferralPayout {
+  id: string;
+  user_id: string;
+  payout_number: string;
+  gross_amount: number;
+  tds_amount: number;
+  service_tax_amount: number;
+  net_amount: number;
+  status: PayoutStatus;
+  payment_method: PaymentMethod;
+  bank_account_details?: {
+    account_holder: string;
+    account_number: string;
+    ifsc_code: string;
+    bank_name: string;
+  };
+  upi_id?: string;
+  paypal_email?: string;
+  requested_at: string;
+  processed_at?: string;
+  payment_reference?: string;
+  rejected_reason?: string;
+  tax_year: number;
+  tax_quarter: number;
+  created_at: string;
+  user?: UserProfile;
+}
