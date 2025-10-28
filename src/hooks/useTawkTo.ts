@@ -29,7 +29,6 @@ export const useTawkTo = (options: UseTawkToOptions = {}) => {
 
   useEffect(() => {
     if (!propertyId || propertyId === 'your_property_id_here') {
-      console.warn('Tawk.to Property ID is not configured. Please add VITE_TAWKTO_PROPERTY_ID to your .env file.');
       return;
     }
 
