@@ -4,6 +4,7 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import { TawkToWidget } from './components/TawkToWidget';
 import { PublicLayout } from './layouts/PublicLayout';
 import { DashboardLayout } from './layouts/DashboardLayout';
+import { AdminLayout } from './layouts/AdminLayout';
 
 import { Home } from './pages/Home';
 import { Pricing } from './pages/Pricing';
@@ -70,7 +71,7 @@ function App() {
             path="/admin"
             element={
               <ProtectedRoute requireAdmin>
-                <DashboardLayout />
+                <AdminLayout />
               </ProtectedRoute>
             }
           >
