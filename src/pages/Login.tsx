@@ -4,7 +4,7 @@ import { Server } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 export function Login() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -17,6 +17,7 @@ export function Login() {
     setLoading(true);
 
     try {
+      const email = username.includes('@') ? username : `${username}@test.com`;
       await signIn(email, password);
       navigate('/dashboard');
     } catch (err: any) {
@@ -48,15 +49,15 @@ export function Login() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-semibold text-slate-200 mb-2">
-                Email Address
+                Username
               </label>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 required
                 className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/30 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-slate-400"
-                placeholder="you@example.com"
+                placeholder="Enter username"
               />
             </div>
 
@@ -110,7 +111,7 @@ export function Login() {
               <p className="text-xs font-semibold text-cyan-300 mb-2">Demo Credentials:</p>
               <div className="space-y-1">
                 <p className="text-sm text-slate-300">
-                  <span className="text-cyan-400">Email:</span> 1234@test.com
+                  <span className="text-cyan-400">Username:</span> 1234
                 </p>
                 <p className="text-sm text-slate-300">
                   <span className="text-cyan-400">Password:</span> 1234
