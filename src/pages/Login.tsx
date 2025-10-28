@@ -125,7 +125,7 @@ export function Login() {
                     <span className="text-cyan-400">Username:</span> admin
                   </p>
                   <p className="text-sm text-slate-300">
-                    <span className="text-cyan-400">Password:</span> 1234
+                    <span className="text-cyan-400">Password:</span> 123456
                   </p>
                 </div>
                 <div className="bg-slate-950/50 rounded-lg p-3 border border-green-500/20">
@@ -134,9 +134,12 @@ export function Login() {
                     <span className="text-cyan-400">Username:</span> user
                   </p>
                   <p className="text-sm text-slate-300">
-                    <span className="text-cyan-400">Password:</span> 1234
+                    <span className="text-cyan-400">Password:</span> 123456
                   </p>
                 </div>
+                <p className="text-xs text-slate-500 mt-2">
+                  Note: Create these accounts via the signup page first
+                </p>
               </div>
             </div>
           </div>
