@@ -147,10 +147,16 @@ export function DashboardLayout() {
             >
               <Menu className="h-6 w-6" />
             </button>
-            <div className="flex-1">
+            <div className="flex-1 flex items-center justify-between">
               <h1 className="text-xl font-semibold text-white">
                 {isAdminPanel ? 'Administration' : 'Dashboard'}
               </h1>
+              <div className="flex items-center space-x-2 px-4 py-2 bg-slate-800 rounded-lg border border-cyan-500/20">
+                <div className={`w-2 h-2 rounded-full ${isAdminPanel ? 'bg-red-500' : 'bg-green-500'}`}></div>
+                <span className="text-sm font-semibold text-white">
+                  {isAdminPanel ? 'ADMIN MODE' : 'USER MODE'}
+                </span>
+              </div>
             </div>
           </header>
 

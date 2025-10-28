@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Server } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { supabase } from '../lib/supabase';
 
 export function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState<'user' | 'admin'>('user');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { signIn } = useAuth();
@@ -20,7 +20,15 @@ export function Login() {
     try {
       const email = username.includes('@') ? username : `${username}@test.com`;
       await signIn(email, password);
-      navigate(role === 'admin' ? '/admin' : '/dashboard');
+
+      const { data: profile } = await supabase
+        .from('users_profiles')
+        .select('role')
+        .eq('email', email)
+        .maybeSingle();
+
+      const isAdmin = profile?.role === 'admin' || profile?.role === 'super_admin';
+      navigate(isAdmin ? '/admin' : '/dashboard');
     } catch (err: any) {
       setError(err.message || 'Failed to sign in');
     } finally {
@@ -48,36 +56,6 @@ export function Login() {
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label className="block text-sm font-semibold text-slate-200 mb-2">
-                Select Role
-              </label>
-              <div className="grid grid-cols-2 gap-3 mb-6">
-                <button
-                  type="button"
-                  onClick={() => setRole('user')}
-                  className={`px-4 py-3 rounded-lg font-semibold transition border-2 ${
-                    role === 'user'
-                      ? 'bg-cyan-500 text-white border-cyan-500'
-                      : 'bg-slate-800 text-slate-300 border-cyan-500/30 hover:border-cyan-500/50'
-                  }`}
-                >
-                  User
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setRole('admin')}
-                  className={`px-4 py-3 rounded-lg font-semibold transition border-2 ${
-                    role === 'admin'
-                      ? 'bg-cyan-500 text-white border-cyan-500'
-                      : 'bg-slate-800 text-slate-300 border-cyan-500/30 hover:border-cyan-500/50'
-                  }`}
-                >
-                  Admin
-                </button>
-              </div>
-            </div>
-
             <div>
               <label className="block text-sm font-semibold text-slate-200 mb-2">
                 Username
