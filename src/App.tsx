@@ -23,6 +23,11 @@ import { Settings } from './pages/dashboard/Settings';
 
 import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { ReferralManagement } from './pages/admin/ReferralManagement';
+import { UserManagement } from './pages/admin/UserManagement';
+import { ServerManagement } from './pages/admin/ServerManagement';
+import { PlansManagement } from './pages/admin/PlansManagement';
+import { OrdersManagement } from './pages/admin/OrdersManagement';
+import { SupportManagement } from './pages/admin/SupportManagement';
 import SplashCursor from './components/SplashCurser';
 
 function App() {
@@ -70,12 +75,12 @@ function App() {
             }
           >
             <Route index element={<AdminDashboard />} />
-            <Route path="users" element={<div className="text-center py-20"><h2 className="text-2xl font-bold text-gray-900">User Management</h2><p className="text-gray-600">Coming soon</p></div>} />
-            <Route path="servers" element={<div className="text-center py-20"><h2 className="text-2xl font-bold text-gray-900">Server Management</h2><p className="text-gray-600">Coming soon</p></div>} />
-            <Route path="plans" element={<div className="text-center py-20"><h2 className="text-2xl font-bold text-gray-900">Plans Management</h2><p className="text-gray-600">Coming soon</p></div>} />
-            <Route path="orders" element={<div className="text-center py-20"><h2 className="text-2xl font-bold text-gray-900">Orders Management</h2><p className="text-gray-600">Coming soon</p></div>} />
+            <Route path="users" element={<UserManagement />} />
+            <Route path="servers" element={<ServerManagement />} />
+            <Route path="plans" element={<PlansManagement />} />
+            <Route path="orders" element={<OrdersManagement />} />
             <Route path="referrals" element={<ReferralManagement />} />
-            <Route path="support" element={<div className="text-center py-20"><h2 className="text-2xl font-bold text-gray-900">Support Management</h2><p className="text-gray-600">Coming soon</p></div>} />
+            <Route path="support" element={<SupportManagement />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/" replace />} />

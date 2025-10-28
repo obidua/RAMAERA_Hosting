@@ -12,7 +12,8 @@ import {
   Users,
   ShoppingCart,
   FileText,
-  Gift
+  Gift,
+  Package
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -38,12 +39,12 @@ export function DashboardLayout() {
 
   const adminLinks = [
     { to: '/admin', icon: LayoutDashboard, label: 'Dashboard' },
-    { to: '/admin/users', icon: Users, label: 'Users' },
-    { to: '/admin/servers', icon: Server, label: 'Servers' },
-    { to: '/admin/plans', icon: FileText, label: 'Plans' },
-    { to: '/admin/orders', icon: ShoppingCart, label: 'Orders' },
-    { to: '/admin/referrals', icon: Gift, label: 'Referrals' },
-    { to: '/admin/support', icon: MessageSquare, label: 'Support' },
+    { to: '/admin/users', icon: Users, label: 'User Management' },
+    { to: '/admin/servers', icon: Server, label: 'Server Management' },
+    { to: '/admin/plans', icon: Package, label: 'Plans Management' },
+    { to: '/admin/orders', icon: ShoppingCart, label: 'Orders Management' },
+    { to: '/admin/referrals', icon: Gift, label: 'Referral Management' },
+    { to: '/admin/support', icon: MessageSquare, label: 'Support Management' },
   ];
 
   const links = location.pathname.startsWith('/admin') ? adminLinks : customerLinks;
