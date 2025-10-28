@@ -117,14 +117,26 @@ export function Login() {
 
           <div className="mt-6 pt-6 border-t border-cyan-500/20">
             <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-4">
-              <p className="text-xs font-semibold text-cyan-300 mb-2">Demo Credentials:</p>
-              <div className="space-y-1">
-                <p className="text-sm text-slate-300">
-                  <span className="text-cyan-400">Username:</span> 1234
-                </p>
-                <p className="text-sm text-slate-300">
-                  <span className="text-cyan-400">Password:</span> 1234
-                </p>
+              <p className="text-xs font-semibold text-cyan-300 mb-3">Demo Credentials:</p>
+              <div className="space-y-3">
+                <div className="bg-slate-950/50 rounded-lg p-3 border border-red-500/20">
+                  <p className="text-xs font-semibold text-red-400 mb-1">Admin Account:</p>
+                  <p className="text-sm text-slate-300">
+                    <span className="text-cyan-400">Username:</span> admin
+                  </p>
+                  <p className="text-sm text-slate-300">
+                    <span className="text-cyan-400">Password:</span> 1234
+                  </p>
+                </div>
+                <div className="bg-slate-950/50 rounded-lg p-3 border border-green-500/20">
+                  <p className="text-xs font-semibold text-green-400 mb-1">User Account:</p>
+                  <p className="text-sm text-slate-300">
+                    <span className="text-cyan-400">Username:</span> user
+                  </p>
+                  <p className="text-sm text-slate-300">
+                    <span className="text-cyan-400">Password:</span> 1234
+                  </p>
+                </div>
               </div>
             </div>
           </div>
