@@ -110,10 +110,10 @@ export function Login() {
               <p className="text-xs font-semibold text-cyan-300 mb-2">Demo Credentials:</p>
               <div className="space-y-1">
                 <p className="text-sm text-slate-300">
-                  <span className="text-cyan-400">Email:</span> test@demo.com
+                  <span className="text-cyan-400">Email:</span> 1234@test.com
                 </p>
                 <p className="text-sm text-slate-300">
-                  <span className="text-cyan-400">Password:</span> test1234
+                  <span className="text-cyan-400">Password:</span> 1234
                 </p>
               </div>
             </div>
